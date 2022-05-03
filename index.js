@@ -1,7 +1,7 @@
 // Simple Express server setup to serve the build output
-//import path from "path";
+import path from "path";
 import express from "express";
-//import bodyParser from "body-parser";
+import bodyParser from "body-parser";
 //import cors from "cors";
 import dotenv from "dotenv";
 //import allRouter from "./router/all.js";
