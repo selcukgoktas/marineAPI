@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 //import allRouter from "./router/all.js";
 
 
-
 // HOST CONST
 dotenv.config();
 
@@ -15,12 +14,7 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 1453;
 const PROTOCOL = process.env.HTTPS === 'true' ? "https" : "http";
 
-
-
 const URL = `${PROTOCOL}://${HOST}:${PORT}`;
-
-
-
 
 const app = express();
 const __dirname = path.resolve();
@@ -35,6 +29,21 @@ app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 
 // app.use(`/api/v1/all`, allRouter);
+
+
+app.get('/api/marine/', (req, res) => {
+	var query = req.query;
+	console.log("Other  : ",query);
+
+
+    const msg = {
+        MMSI: "123123",
+        X: "-345345345",
+        Y: "123123123",
+    };
+    res.status(200).json(msg);    
+	
+});
 
 
 app.get(/^(?!\/api).+/, (stdreq, stdres) => {
