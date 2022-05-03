@@ -1,7 +1,7 @@
 const http = require('http');
 require('dotenv').config();
 
-const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
