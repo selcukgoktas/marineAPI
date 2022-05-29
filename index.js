@@ -72,7 +72,7 @@ const scrap_url = 'https://www.myshiptracking.com/vessels/'+mmsi;
 //const vesselUrl = $(`#content_in > div > div.listbox.anc_activity.ads_160_right > div > table > tbody > tr > td:nth-child(2) > span.table_title.table_vessel_title > a`).attr('href');
 
 const gourl=scrap_url; // "https://www.myshiptracking.com"+vesselUrl;
-
+const mapurl="https://www.myshiptracking.com/?mmsi="+mmsi;
 console.log("New url : "+gourl);
 
 const vesOptions={
@@ -92,37 +92,40 @@ const $v = cheerio.load(scrap_ves.data);
 
 
 const msg = {
-    vesselUrl,
     mmsi,
-    Name: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(1) > td:nth-child(2) > strong`).text(),
-    Flag: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(2) > td:nth-child(2)`).text(),
-    IMO: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(4) > td:nth-child(2) > strong`).text(),
-    CallSign: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(5) > td:nth-child(2)`).text(),
-    Type: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(6) > td:nth-child(2)`).text(),
-    Size: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(7) > td:nth-child(2)`).text(),
-    SpeedAvgMax: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(8) > td:nth-child(2)`).text(),
-    DraughtAVG: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(9) > td:nth-child(2)`).text(),
-    GRT: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(10) > td:nth-child(2)`).text(),
-    DWT: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(11) > td:nth-child(2)`).text(),
-    Owner: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(12) > td.vessels_table_key`).text(),
-    Build: $v(`#content_in > div > div.listbox.listbox_tr1.ads_160_right > div.listbox_content.can_select.tablevessel > div.vessels_main_data.cell > table > tbody > tr:nth-child(13) > td:nth-child(2)`).text(),
-    Information: $v(`#content_in > div > div:nth-child(4) > div.listbox_content.paddleftright.font13`).text(),
-    Longitude: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(1) > td:nth-child(2)`).text(),  
-    Latitude: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(2) > td:nth-child(2)`).text(),
-    Status: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(3) > td:nth-child(2)`).text(),
-    Speed: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(4) > td:nth-child(2)`).text(),
-    Course: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(5) > td:nth-child(2)`).text(),
-    Area: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(6) > td:nth-child(2)`).text(),
-    Port: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(7) > td:nth-child(2)`).text(),
-    Station: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(1) > tbody > tr:nth-child(8) > td:nth-child(2)`).text(),
-    LastPort: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(2) > tbody > tr:nth-child(1) > td:nth-child(2)`).text(),
-    Destination: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(2) > tbody > tr:nth-child(2) > td:nth-child(2)`).text(),
-    ETA: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(2) > tbody > tr:nth-child(3) > td:nth-child(2)`).text(),
-    Draught: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(2) > tbody > tr:nth-child(4) > td:nth-child(2)`).text(),
-    PositionReceived: $v(`#content_in > div > div:nth-child(5) > div.listbox_content.can_select.paddfull > table:nth-child(2) > tbody > tr:nth-child(5) > td:nth-child(2)`).text(),
-    DestinationPort: $v(`#content_in > div > div:nth-child(7) > div.listbox_content > table > tbody > tr > td:nth-child(1) > a`).text(),
-    ScheduledArrival : $v(`#content_in > div > div:nth-child(7) > div.listbox_content > table > tbody > tr > td:nth-child(2) > span`).text(),
-    EstimatedArrival: $v(`#content_in > div > div:nth-child(7) > div.listbox_content > table > tbody > tr > td:nth-child(3) > span`).text(),
+    vesselUrl,
+    mapurl,
+    
+    Name: $v(`document.querySelector("#stick-id-1 > div > div > div > div.d-flex.p-2.text-center.text-sm-left.flex-grow-1.justify-center-sm > div > div:nth-child(1) > h1")`).text(),
+    FlagPng: "https://www.myshiptracking.com/"+$v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(4) > td > div > img")`).text(),
+    Flag:$v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(4) > td > div")`).text(),
+    IMO: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(2) > td")`).text(),
+    CallSign: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(5) > td")`).text(),
+    Type: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(1) > td > div")`).text(),
+    Size: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(6) > td")`).text(),
+    SpeedAvg: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(3) > td")`).text(),
+    SpeedMax: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(4) > td")`).text(),
+    DraughtAVG: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(5) > td")`).text(),
+    GRT: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(7) > td")`).text(),
+    DWT: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(8) > td")`).text(),
+  
+    Build: $v(`document.querySelector("#vsl-info-card > table > tbody > tr:nth-child(9) > td")`).text(),
+    Information: $v(`document.querySelector("#content_in_txt > div:nth-child(7) > div > div.mst-flex-wrapper.order-10.order-lg-2 > div.mst-flex-item.mst-flex-60.pl-2.pr-2.toMobHide > div > div.card-body.p-3.p-sm-3")`).text(),
+    Longitude: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(1) > td")`).text(),  
+    Latitude: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(2) > td")`).text(),
+    Status: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(3) > td")`).text(),
+    Speed: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(4) > td > i")`).text(),
+    Course: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(5) > td")`).text(),
+    Area: $v(`document.querySelector("#ft-position > div > div.card-body.p-2.p-sm-4.position-relative.bg-transparent > table > tbody > tr:nth-child(6) > td")`).text(),
+    from: $v(`document.querySelector("#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div:nth-child(1) > div > div:nth-child(1) > h3 > a")`).text(),
+    to: $v(`document.querySelector("#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div.flex-grow-1.w-50-force.myst-arrival-cont.arrived.z1 > div > div:nth-child(1) > h3 > a")`).text(),
+    tripTime: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(1) > td")`).text(),
+    PositionReceived: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(2) > tr:nth-child(5) > td > span")`).text(),
+    tripDistance: $v(`document.querySelector("#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(2) > td")`).text(),
+    fromDateTime: $v(`document.querySelector("#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div:nth-child(1) > div > div.px-1")`).text(),
+    toDateTime: $v(`document.querySelector("#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div.flex-grow-1.w-50-force.myst-arrival-cont.arrived.z1 > div > div:nth-child(5)")`).text(),
+    company: $v(`document.querySelector("#companysect > div > strong")`).text(),
+   
     
     
 
