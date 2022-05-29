@@ -49,7 +49,7 @@ app.get('/api/vessel/', (req, res) => {
 
 // https://marineforce.herokuapp.com/api/vessel?mmsi=310627000
 
-const scrap_url = 'https://www.myshiptracking.com/vessels?name='+mmsi;
+const scrap_url = 'https://www.myshiptracking.com/vessels/'+mmsi;
 
 
 (async () => {
@@ -69,9 +69,9 @@ const scrap_url = 'https://www.myshiptracking.com/vessels?name='+mmsi;
 
 
 
-const vesselUrl = $(`#content_in > div > div.listbox.anc_activity.ads_160_right > div > table > tbody > tr > td:nth-child(2) > span.table_title.table_vessel_title > a`).attr('href');;
+//const vesselUrl = $(`#content_in > div > div.listbox.anc_activity.ads_160_right > div > table > tbody > tr > td:nth-child(2) > span.table_title.table_vessel_title > a`).attr('href');
 
-const gourl="https://www.myshiptracking.com"+vesselUrl;
+const gourl=scrap_url; // "https://www.myshiptracking.com"+vesselUrl;
 
 console.log("New url : "+gourl);
 
