@@ -71,8 +71,9 @@ const scrap_url = 'https://www.myshiptracking.com/vessels/'+mmsi;
 
 //const vesselUrl = $(`#content_in > div > div.listbox.anc_activity.ads_160_right > div > table > tbody > tr > td:nth-child(2) > span.table_title.table_vessel_title > a`).attr('href');
 
-const gourl=scrap_url; // "https://www.myshiptracking.com"+vesselUrl;
+const gourl='https://www.myshiptracking.com/vessels/'+mmsi;
 const mapurl="https://www.myshiptracking.com/?mmsi="+mmsi;
+
 console.log("New url : "+gourl);
 
 const vesOptions={
@@ -93,7 +94,7 @@ const $v = cheerio.load(scrap_ves.data);
 
 const msg = {
     mmsi,
-    vesselUrl,
+    gourl,
     mapurl,
     
     Name: $v(`document.querySelector("#stick-id-1 > div > div > div > div.d-flex.p-2.text-center.text-sm-left.flex-grow-1.justify-center-sm > div > div:nth-child(1) > h1")`).text(),
