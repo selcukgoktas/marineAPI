@@ -86,7 +86,7 @@ const scrap_ves=await axios(vesOptions);
 
 const $v = cheerio.load(scrap_ves.data);
 
-
+console.log($v);
 
 
 
