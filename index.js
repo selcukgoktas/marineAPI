@@ -86,7 +86,7 @@ const scrap_ves=await axios(vesOptions);
 
 const $v = cheerio.load(scrap_ves.data);
 
-console.log($v);
+console.log($v(`#content_in_txt > div:nth-child(7) > div > div.mst-flex-wrapper.order-10.order-lg-2 > div.mst-flex-item.mst-flex-60.pl-2.pr-2.toMobHide > div > div.card-body.p-3.p-sm-3 > nav > ol > li.breadcrumb-item.active > span`,html).text());
 
 
 
