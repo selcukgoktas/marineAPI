@@ -93,7 +93,7 @@ const msg = {
     gourl,
     mapurl,
     
-    Name: $v(`#stick-id-3 > div > div > div > div.d-flex.p-2.text-center.text-sm-left.flex-grow-1.justify-center-sm > div > div:nth-child(1) > h1`).text(),
+    Name: $v(`#stick-id-3 > div > div > div > div.d-flex.p-2.text-center.text-sm-left.flex-grow-1.justify-center-sm > div`).text(),
     FlagPng: "https://www.myshiptracking.com/"+$v(`#vsl-info-card > table > tbody > tr:nth-child(4) > td > div > img`).text(),
     Flag:$v(`#vsl-info-card > table > tbody > tr:nth-child(4) > td > div`).text(),
     IMO: $v(`#vsl-info-card > table > tbody > tr:nth-child(2) > td`).text(),
