@@ -87,13 +87,28 @@ const scrap_ves=await axios(vesOptions);
 const $v = cheerio.load(scrap_ves.data);
 
 
+const searchTable="https://www.myshiptracking.com/vessels?side=false&name="+mmsi;
+
+const vesOptionsTable={
+    method:'GET',
+    url:searchTable
+    };
+
+
+    const scrap_Table=await axios(vesOptionsTable);
+
+    const $vT = cheerio.load(scrap_Table.data);
+
+    
+
+
 
 const msg = {
     mmsi,
     gourl,
     mapurl,
     
-    Name: $v(`//*[@id="stick-id-3"]/div/div/div/div[1]/div/div[1]/h1`).text(),
+    Name: $vT(`#table-filter > tbody > tr > td.stick-left-11 > a`).text(),
     FlagPng: "https://www.myshiptracking.com/"+$v(`#vsl-info-card > table > tbody > tr:nth-child(4) > td > div > img`).text(),
     Flag:$v(`#vsl-info-card > table > tbody > tr:nth-child(4) > td > div`).text(),
     IMO: $v(`#vsl-info-card > table > tbody > tr:nth-child(2) > td`).text(),
