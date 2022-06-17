@@ -113,7 +113,7 @@ const msg = {
     Flag:$v(`#vsl-info-card > table > tbody > tr:nth-child(4) > td > div`).text(),
     IMO: $v(`#vsl-info-card > table > tbody > tr:nth-child(2) > td`).text(),
     CallSign: $v(`#vsl-info-card > table > tbody > tr:nth-child(5) > td`).text(),
-    Type: $v(`#content_in_txt > div:nth-child(7) > div > div.mst-flex-wrapper.order-10.order-lg-2 > div.mst-flex-item.mst-flex-60.pl-2.pr-2.toMobHide > div > div.card-body.p-3.p-sm-3 > p:nth-child(3) > strong:nth-child(2)`).text(),
+    Type: $vT(`#table-filter > tbody > tr > td:nth-child(3) > div`).text(),
     Size: $v(`#vsl-info-card > table > tbody > tr:nth-child(6) > td`).text(),
     SpeedAvg: $v(`#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(3) > td`).text(),
     SpeedMax: $v(`#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(4) > td`).text(),
