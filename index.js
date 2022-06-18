@@ -136,7 +136,7 @@ const msg = {
     tripDistance: $v(`#ft-trip > div:nth-child(1) > div > div.card-body.p-2.p-sm-3 > div.d-flex.border-top.flex-column.flex-sm-row.pt-sm-2.mt-3 > div.p-sm-2.mt-3.mt-sm-0.flex-fill > table > tbody:nth-child(1) > tr:nth-child(2) > td`).text(),
     fromDateTime: $v(`#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div:nth-child(1) > div > div.px-1`).text(),
     toDateTime: $v(`#vpage-current-trip > div.d-flex.flex-grow-1.overflow-hidden > div > div.flex-grow-1.w-50-force.myst-arrival-cont.arrived.z1 > div > div:nth-child(5)`).text(),
-    company: $v(`#companysect > div`).html(),
+    company: $v(`#companysect > div`).text(),
    
     
     
